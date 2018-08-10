@@ -1,0 +1,51 @@
+challenge:
+Query all columns for all American cities in CITY with populations larger than 100000. The CountryCode for America is USA.
+
+answer:
+SELECT * FROM city WHERE countrycode = 'USA' AND population > 100000;
+
+challenge:
+Let N be the number of CITY entries in STATION, and let N1 be the number of distinct CITY names in STATION;
+ query the value of N - N1 from STATION. In other words, find the difference between the total number of CITY
+ entries in the table and the number of distinct CITY entries in the table.
+
+answer:
+SELECT COUNT(city) - COUNT(DISTINCT city) FROM station;
+
+challenge:
+Query the two cities in STATION with the shortest and longest CITY names, as well as their respective lengths
+(i.e.: number of characters in the name). If there is more than one smallest or largest city, choose the one
+that comes first when ordered alphabetically.
+
+answer:
+SELECT city, LENGTH(city) AS len FROM station ORDER BY len ASC, city ASC LIMIT 1;
+SELECT city, LENGTH(city) AS len FROM station ORDER BY len DESC, city ASC LIMIT 1;
+
+challenge:
+Query the list of CITY names starting with vowels (i.e., a, e, i, o, or u) from STATION. Your result cannot contain duplicates.
+
+answer:
+SELECT DISTINCT city FROM station WHERE city REGEXP '^[aeiou].*';
+
+challenge:
+Query the list of CITY names ending with vowels (i.e., a, e, i, o, or u) from STATION. Your result cannot contain duplicates.
+
+answer:
+SELECT DISTINCT city FROM station WHERE city REGEXP '.*[aeiou]$';
+
+challenge:
+Query the list of CITY names from STATION which have vowels (i.e., a, e, i, o, and u) as both their first and last characters.
+Your result cannot contain duplicates.
+
+answer:
+SELECT DISTINCT city FROM station WHERE city REGEXP '^[aeiou].*[aeiou]$';
+
+challenge:
+Query the list of CITY names from STATION that do not start with vowels. Your result cannot contain duplicates
+
+answer:
+SELECT DISTINCT city FROM station WHERE city NOT REGEXP '^[aeiou].*';
+
+challenge:
+
+answer:
